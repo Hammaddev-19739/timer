@@ -1,0 +1,75 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #282c34;
+  font-family: 'Courier New', Courier, monospace;
+  color: #e4c309;
+}
+
+#clock {
+  font-size: 5rem;
+  background-color: #20232a;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  letter-spacing: 5px;
+  border: 2px solid transparent; /* Border ko enhance karne ke liye */
+  transition: all 0.3s ease-in-out; /* Smooth transitions ke liye */
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover Effect */
+#clock:hover {
+  border-color: #61dafb; /* Border color glow effect */
+  box-shadow: 0 1px 30px rgba(97, 218, 251, 0.2), 0 0 15px rgba(97, 218, 251, 0.4); /* Outer glow */
+  transform: scale(1.05); /* Thoda bada hone ka effect */
+}
+
+/* Pseudo-element for Inner Glow */
+#clock::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  background: linear-gradient(180deg, #61dafb, transparent);
+  border-radius: 10px;
+  z-index: -1;
+  filter: blur(10px); /* Soft glow effect */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#clock:hover::before {
+  opacity: 1; /* Hover pe glow visible hoga */
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  #clock {
+    font-size: 2.5rem;
+    padding: 15px 30px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #clock {
+    font-size: 4rem;
+    padding: 20px 35px;
+  }
+}
+
+/* Larger Screens */
+@media (min-width: 1025px) {
+  #clock {
+    font-size: 5rem;
+    padding: 20px 40px;
+  }
+}
